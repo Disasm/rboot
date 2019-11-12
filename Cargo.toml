@@ -1,0 +1,24 @@
+[package]
+name = "rboot"
+version = "0.1.0"
+authors = ["Vadim Kaushan <admin@disasm.info>"]
+edition = "2018"
+
+[dependencies]
+riscv = "0.5.4"
+riscv-rt = "0.6.1"
+e310x-hal = "0.8.2"
+panic-halt = "0.2.0"
+embedded-hal = "0.2.3"
+bit_field = "0.10.0"
+
+[features]
+board-hifive1 = []
+board-hifive1-revb = ["e310x-hal/g002"]
+board-lofive = []
+board-lofive-r1 = ["e310x-hal/g002"]
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
