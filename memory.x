@@ -1,7 +1,8 @@
 INCLUDE memory-fe310.x
 MEMORY
 {
-    FLASH : ORIGIN = 0x20000000, LENGTH = 16K
+    /* The bootloader actually fits into 1K with proper optimizations */
+    FLASH : ORIGIN = 0x20000000, LENGTH = 4K
 }
 
 REGION_ALIAS("REGION_TEXT", FLASH);

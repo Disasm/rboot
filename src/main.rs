@@ -46,6 +46,12 @@ const FINAL_ADDRESS: usize = 0x20010000;
 const RED_LED: usize = 22;
 const GREEN_LED: usize = 19;
 
+// FE310 has only one hart, so it's safe to just return true
+#[export_name = "_mp_hook"]
+pub extern "Rust" fn mp_hook() -> bool {
+    true
+}
+
 #[entry]
 fn main() -> ! {
     let p = Peripherals::take().unwrap();
